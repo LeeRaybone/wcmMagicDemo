@@ -1,0 +1,29 @@
+   
+  .footer {
+    background-color: #282c34;
+    min-height: 20px;
+    width: 100vmax;
+    display: flex;
+    position:fixed;                  
+    bottom:0;                           
+    left:0;          
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    color: white;
+  }
+
+  .footer-text {
+    font-family: 'Lato-Thin', sans-serif;
+    font-weight: 400;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-size: 15px;
+    color: white;
+    margin:10px;
+    margin-right: 20px;
+  }
+
+
+  
+  

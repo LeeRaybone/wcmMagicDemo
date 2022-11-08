@@ -1,0 +1,51 @@
+.App {
+    text-align: center;
+  }
+  
+  .App-logo {
+    height: 80px;
+    pointer-events: none;
+    margin: 20px ;
+  }
+   
+  .header {
+    background-color: #282c34;
+    min-height: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+
+  .header-text {
+    font-family: 'Lato-Regular', sans-serif;
+    font-weight: 400;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-size: calc(30px + 2vmin);
+    color: white;
+    overflow-wrap: break-word;
+  }
+
+  .menu{
+    color: white;
+    height: 50px;
+    width:50px;
+position:absolute;
+right: 30px;
+background-color:#282c34;
+
+  }
+  
+  .menuIcon{
+    color: white;
+    height: 50px;
+    width:50px;
+background-color:#282c34;
+position:fixed;
+right:20px;
+  }
+  
+  

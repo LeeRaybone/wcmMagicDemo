@@ -1,26 +1,54 @@
-import React from 'react';
-import logo from './assets/logo.svg';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Drawer } from '@mui/material';
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
+import Menu from './components/Menu/Menu';
+import About from './pages/about/about';
+import Contact from './pages/contact/contact';
+import HomePage from './pages/homepage/homepage';
+
+const App = (): JSX.Element => {
+    const [isOpen, setIsOpen] = React.useState(false);
+
+    useEffect(() => {
+        setIsOpen(false);
+    }, []);
+
+    const toggleDrawer = (): void => {
+        console.log('file: App.tsx ~ line 19 ~ toggleDrawer ~ isOpen', isOpen);
+        setIsOpen((prev) => !prev);
+    };
+
+    return (
+        <div>
+            <Router>
+                <nav aria-label="mailbox folders">
+                    <Drawer
+                        open={isOpen}
+                        onClose={toggleDrawer}
+                        anchor="right"
+                        ModalProps={{
+                            keepMounted: true, // Better open performance on mobile.
+                        }}
+                    >
+                        <Menu />
+                    </Drawer>
+                </nav>
+                <Header openMenu={toggleDrawer} />
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/about" element={<About />} />
+                </Routes>
+
+                <Footer />
+            </Router>
+        </div>
+    );
+};
 
 export default App;
