@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './about.css';
+import './about.scss';
 
 const About = (): JSX.Element => {
     return (

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './Header.css';
+import './Header.scss';
 
 import { ReactComponent as HamburgerIcon } from '../../assets/hamburger.svg';
 import wcmLogo from '../../assets/logoWCM.svg';

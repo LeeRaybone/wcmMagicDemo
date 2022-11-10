@@ -11,7 +11,9 @@ import About from './pages/about/about';
 import Contact from './pages/contact/contact';
 import Events from './pages/events/events';
 import HomePage from './pages/homepage/homepage';
+import Gallery from './pages/gallery/gallery';
 import Join from './pages/join/join';
+import Magicians from './pages/magicians/magicians';
 import { appTheme } from './theme/theme';
 
 const App = (): JSX.Element => {
@@ -50,6 +52,8 @@ const App = (): JSX.Element => {
                         <Route path="/about" element={<About />} />
                         <Route path="/events" element={<Events />} />
                         <Route path="/join" element={<Join />} />
+                        <Route path="/magicians" element={<Magicians />} />
+                        <Route path="/gallery" element={<Gallery />} />
                     </Routes>
 
                     <Footer />
