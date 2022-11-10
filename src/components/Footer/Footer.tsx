@@ -1,14 +1,16 @@
 import React from 'react';
 import { DateTime } from 'luxon';
 
-import './Footer.css';
+import './Footer.scss';
 
-function Header() {
+const Footer = (): JSX.Element => {
     return (
         <div className="footer">
-            <text className="footer-text">Copyright ©{DateTime.now().year} Wolverhampton Circle of Magicians. All Rights Reserved</text>
+            <div className="copyrightText">
+                <text className="footer-text">Copyright ©{DateTime.now().year} Wolverhampton Circle of Magicians. All Rights Reserved</text>
+            </div>
         </div>
     );
-}
+};
 
-export default Header;
+export default Footer;

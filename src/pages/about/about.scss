@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Kolker+Brush:wght@100;400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
 
-body, html {
+body {
     font-family: 'Lato-Regular', sans-serif;
     font-weight: 400;
     font-size: 15px;
@@ -11,7 +11,7 @@ body, html {
     color:#000000
 }
 
-.mainBody{
+.aboutMainBody{
   margin: auto;
   padding: 30px;
 }
@@ -34,43 +34,11 @@ margin: 12px;
   text-align: center;
 }
 
-.App-logo {
-  height: 20vmin;
+.image{
   pointer-events: none;
   float:right;
+  height:30vh;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
-
-
-
-.App-header {
-  background-color: #282c34;
-  min-height: 30vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.divider {
-  margin: auto;
-  height: 1px;
-  width: 80%;
-  background-color: white;
-}
-
-.App-link {
-  color:#282c34;
-  text-decoration: none;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}

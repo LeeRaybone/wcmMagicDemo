@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@100;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kolker+Brush:wght@100;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+
+.eventBody{
+  margin:20px;
+}
+
+.contactTitle {
+  font-family: 'Lato-Regular', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 25px;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  color:#282c34
+}
+
+.contactTitleWrapper {
+margin: 12px;
+}
+
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  align-items: center;
+  }
+  
+  .formInput {
+    width: 200px;
+    }
+    
+    .textField{
+      width: 200px;
+      margin-left: 'auto';
+      margin-right: 'auto';         
+      padding-Bottom: 0;
+      margin-Top: 0;
+      font-Weight: 500;
+          }
+
+.buttonContainer{
+  display: flex;
+  flex-direction: row;
+  margin: 12px;
+  margin-bottom: 30px;
+  width: 200px;
+  justify-content:space-between;
+};

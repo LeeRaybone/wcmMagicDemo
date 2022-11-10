@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@100;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kolker+Brush:wght@100;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+body {
+    font-family: 'Lato-Thin', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+
+.mainBody{
+  margin: auto;
+}
+
+.title {
+  font-family: 'Lato-Regular', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 25px;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  color:#282c34
+}
+
+.title-wrapper {
+margin: 12px;
+}
+
+html {
+  background-color: #cfcfcfee;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 20vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.divider {
+  margin: auto;
+  height: 2px;
+  width:80vw;
+  background-color:  #282c34;
+}
+
+.appLinks {
+  color:#282c34;
+  text-decoration: none;
+}
+
+.pageTitleWrapper{
+  margin: 12px;
+}
+
+.appMainContainer{
+  margin-left:auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.appMainBodyContainer{
+  margin-left:5vw;
+  margin-right:5vw;
+  text-align: center;
+  padding-bottom: 25vh;
+}
+
+
+h1{
+  font-family: 'Lato-Bold', sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 45px;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  color:#282c34
+}
+
+h2{
+  font-family: 'Lato-Bold', sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 35px;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  color:#282c34
+}
+
+h3{
+  font-family: 'Lato-Bold', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 22px;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  color:#282c34
+}
+
+h4{
+  font-family: 'Lato-SemiBold', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 22px;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  color:#282c34
+}

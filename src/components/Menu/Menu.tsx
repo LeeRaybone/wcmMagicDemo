@@ -13,9 +13,9 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 
-import './Menu.css';
+import './Menu.scss';
 
-import wcmLogo from '../../assets/logoWCM.svg';
+import wcmLogo from '../../assets/logoWCMwhite.svg';
 
 export interface MenuProps {}
 
