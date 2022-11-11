@@ -10,18 +10,18 @@ const Magicians = (): JSX.Element => {
             <div className="pageTitleWrapper">
                 <h1>Contact details for the Wolverhampton Circle of Magicians members</h1>
             </div>
-            <body className="eventsInfoBody">
+            <div className="eventsInfoBody">
                 <p>
                     If you are looking for Magical Entertainment for your special event, then please contact us so we can put you in touch with
                     mystifying magicians from your local area.
                     <br />
                     Alternatively you can click on the links below to visit the websites of our professional entertainers.
                 </p>
-            </body>
+            </div>
             <div className="eventBody">
                 {magiciansArray.map((magician: any) => {
                     return (
-                        <div className="eventItemImageBody">
+                        <div key={magician.name} className="eventItemImageBody">
                             {magician.imageUrl && <img src={magician.imageUrl} className="eventItemImg" alt="eventImage" />}
                             <h3>{magician.name}</h3>
                             <div className="eventItemDescWrapper">

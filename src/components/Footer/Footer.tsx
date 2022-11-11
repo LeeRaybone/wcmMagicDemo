@@ -7,7 +7,7 @@ const Footer = (): JSX.Element => {
     return (
         <div className="footer">
             <div className="copyrightText">
-                <text className="footer-text">Copyright ©{DateTime.now().year} Wolverhampton Circle of Magicians. All Rights Reserved</text>
+                <span className="footer-text">Copyright ©{DateTime.now().year} Wolverhampton Circle of Magicians. All Rights Reserved</span>
             </div>
         </div>
     );

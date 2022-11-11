@@ -18,3 +18,13 @@
     align-items: center;
     justify-content: center;
   }
+
+  .userText{
+    font-family: 'Lato-Regular', sans-serif;
+    font-weight: 400;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-size: 15px;
+    color: white;
+    overflow-wrap: break-word;
+  }

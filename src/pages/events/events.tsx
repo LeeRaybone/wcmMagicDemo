@@ -78,8 +78,8 @@ const Events = (): JSX.Element => {
                         </>
                     );
                 })}
-                <body className="eventsInfoBody">
-                    <p>
+                <div className="eventsInfoBody">
+                    <div>
                         <h4>General Information</h4>
                         The above programme may be subject to change in order to accommodate lecture opportunities.
                         <br />
@@ -98,8 +98,8 @@ const Events = (): JSX.Element => {
                         that their visit to the W.C.M. is an enjoyable one.
                         <br />
                         Hosts are also required to submit a report on the evening's activities for publishing in "The Journal".
-                    </p>
-                </body>
+                    </div>
+                </div>
             </div>
         </div>
     );

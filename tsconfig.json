@@ -16,7 +16,7 @@
      "allowUnusedLabels":false,
      "noImplicitReturns":true,
      "noUnusedParameters":false,
-     "noUnusedLocals":true,
+     "noUnusedLocals":false,
      "allowJs":true,
      "skipLibCheck":true,
      "esModuleInterop":true,

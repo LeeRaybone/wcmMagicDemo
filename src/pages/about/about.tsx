@@ -7,9 +7,9 @@ const About = (): JSX.Element => {
         <div className="appMainContainer">
             <h1>About the Wolverhampton Circle of Magicians</h1>
             <div className="appMainBodyContainer">
-                <body className="App-body">
-                    <p>
-                        <h2>History</h2>
+                <div className="App-body">
+                    <h2>History</h2>
+                    <div>
                         <img src={'http://www.wcm-magic.co.uk/images/cake.png'} className="image" alt="cakeImage" />
                         <p>
                             After the Second World War, the interest in Magic throughout the country took hold again and Magical Societies began to
@@ -30,25 +30,35 @@ const About = (): JSX.Element => {
                             entertaining performances including many International, IBM, Blackpool and Major Competition winners: Jimmy Carlo, Geoff
                             Ray, Alec Powell, Ron Popple and Sean Carpenter.
                         </p>
-                    </p>
+                    </div>
                     <h2>Membership</h2>
-                    <p>
-                        The WCM currently has members originating from all areas across the midlands. Members have a wide ranging interest in magic
-                        including Magic Enthusiasts, Collectors, Dealers, professional performers and those who just have a strong fascination and
-                        love for the art of Magic.
-                    </p>
-                    <p>
-                        All prospective members of the Wolverhampton Circle of Magicians will be invited to do a presentation of their magic skills.
-                        This will be followed by a 6 month associate membership.
-                    </p>
-                    <p>If you would like further information on joining then please visit our <a className="appLinks" href="/Join">How to Join</a> page.</p>
+                    <div>
+                        <p>
+                            The WCM currently has members originating from all areas across the midlands. Members have a wide ranging interest in
+                            magic including Magic Enthusiasts, Collectors, Dealers, professional performers and those who just have a strong
+                            fascination and love for the art of Magic.
+                        </p>
+                        <p>
+                            All prospective members of the Wolverhampton Circle of Magicians will be invited to do a presentation of their magic
+                            skills. This will be followed by a 6 month associate membership.
+                        </p>
+                        <p>
+                            If you would like further information on joining then please visit our{' '}
+                            <a className="appLinks" href="/Join">
+                                How to Join
+                            </a>{' '}
+                            page.
+                        </p>
+                    </div>
                     <h2>Events</h2>
-                    <p>
-                        The WCM endeavours to organise the most interesting possible diary for its members including lectures, social occasions,
-                        shows, competitions and other special events. Throughout the year the WCM holds several open events where friends and family
-                        of WCM members are welcome to join us. For more information on some of these evening please visit our Events Page.
-                    </p>
-                </body>
+                    <div>
+                        <p>
+                            The WCM endeavours to organise the most interesting possible diary for its members including lectures, social occasions,
+                            shows, competitions and other special events. Throughout the year the WCM holds several open events where friends and
+                            family of WCM members are welcome to join us. For more information on some of these evening please visit our Events Page.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     );

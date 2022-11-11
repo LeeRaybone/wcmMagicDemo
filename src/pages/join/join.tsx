@@ -8,7 +8,7 @@ const Join = (): JSX.Element => {
             <div className="pageTitleWrapper">
                 <h1>How to Join the Wolverhampton Circle of Magicians</h1>
             </div>
-            <body className="appMainBodyContainer">
+            <div className="appMainBodyContainer">
                 <p>
                     The Wolverhampton Circle of Magicians is always happy to accept new members, both professional and amateur magicians. Magic is
                     based on keeping secrets so we do have a membership process, which will include a presentation of your skills.
@@ -32,7 +32,7 @@ const Join = (): JSX.Element => {
                     </a>
                 </p>
                 <img src={'http://www.wcm-magic.co.uk/images/wcm-group-photo.jpg'} />
-            </body>
+            </div>
         </div>
     );
 };
