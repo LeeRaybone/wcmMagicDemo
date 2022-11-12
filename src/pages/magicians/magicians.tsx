@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './magicians.scss';
-
+import markharrington from '../../assets/magicians/mark-harrington.jpeg';
 import { magiciansArray } from '../../info/magicians';
 
 const Magicians = (): JSX.Element => {

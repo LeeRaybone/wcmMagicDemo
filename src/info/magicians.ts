@@ -3,7 +3,7 @@ export const magiciansArray: any[] = [
         name: 'Mark Harrington',
         website1: 'https://www.markharringtonmagician.co.uk',
         website2: 'https://www.illusistration.com',
-        imageUrl: '../../assets/magicians/mark-harrington.jpg',
+        imageUrl: 'markharrington',
     },
     {
         name: 'Jon Marshall',
