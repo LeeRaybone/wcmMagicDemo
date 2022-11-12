@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 // import { getAnalytics } from 'firebase/analytics';
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, UserCredential, updateProfile } from 'firebase/auth';
-import { addDoc, collection, doc, getDoc, getFirestore } from 'firebase/firestore';
+import { getAuth, signInWithEmailAndPassword, updateProfile, UserCredential } from 'firebase/auth';
+import { collection, getFirestore } from 'firebase/firestore';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -25,15 +25,13 @@ const firebaseApp = initializeApp(firebaseConfig);
 
 export const auth = getAuth();
 const firestore = getFirestore();
-const usersCollection = collection(firestore, 'users');
+// const usersCollection = collection(firestore, 'users');
 
 export const signInAuthUserWithEmailAndPassword = async (email: string, password: string): Promise<UserCredential | null> => {
     console.log('file: firebase.utils.ts ~ line 29 ~ signInAuthUserWithEmailAndPassword ~ password', password);
     console.log('file: firebase.utils.ts ~ line 29 ~ signInAuthUserWithEmailAndPassword ~ email', email);
     if (!email || !password) return null;
-    let userCredential: UserCredential;
-
-    userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const userCredential: UserCredential = await signInWithEmailAndPassword(auth, email, password);
     const user = auth.currentUser;
     if (user) {
         updateProfile(user, {

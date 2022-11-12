@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, TextField } from '@mui/material';
 import { UserCredential } from 'firebase/auth';
@@ -33,18 +33,18 @@ const SignIn = (): JSX.Element => {
     const [isPasswordError, setIsPasswordError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
-    
+
     useEffect(() => {
-        let authToken = sessionStorage.getItem('Auth Token')
+        const authToken = sessionStorage.getItem('Auth Token');
 
         if (authToken) {
-            navigate('/members')
+            navigate('/members');
         }
 
         if (!authToken) {
-            navigate('/signin')
+            navigate('/signin');
         }
-    }, [])
+    }, []);
     const handleSignIn = async (event: any): Promise<void> => {
         event.preventDefault();
         try {

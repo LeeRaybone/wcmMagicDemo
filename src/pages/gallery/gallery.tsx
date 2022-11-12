@@ -2,8 +2,6 @@ import React from 'react';
 
 import './gallery.scss';
 
-
-
 const Gallery = (): JSX.Element => {
     return (
         <div className="appMainContainer">
