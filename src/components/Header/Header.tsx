@@ -17,7 +17,9 @@ const Header = ({ openMenu }: HeaderProps): JSX.Element => {
 
     return (
         <header className="header">
-            <img src={wcmLogo} className="App-logo" alt="logo" />
+            <a href="/">
+                <img src={wcmLogo} className="App-logo" alt="logo" />
+            </a>
             <span className="header-text">Wolverhampton Circle of Magicians</span>
             <div className="menuWrapper">
                 <HamburgerIcon id="menu" className="menuIcon" onClick={handleMenu} />
