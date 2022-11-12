@@ -5,8 +5,8 @@ import './contact.scss';
 
 const style = {
     '& .MuiOutlinedInput-root': {
-        minWidth: '200px',
-        width: '50vw',
+        minWidth: '80vw',
+        width: '80vw',
         '&.Mui-focused fieldset': {
             borderColor: 'black',
         },
@@ -24,9 +24,11 @@ const style = {
 const Contact = (): JSX.Element => {
     return (
         <div className="appMainContainer">
-            <h1>How to contact the Wolverhampton Circle of Magicians</h1>
+            <div className="pageTitleWrapper">
+                <h1>How to contact the Wolverhampton Circle of Magicians</h1>
+            </div>
             <div className="appMainBodyContainer">
-                <div className="contactBody">
+                <div className="bodyText">
                     <p>
                         <b>Meeting Venue: </b>
                         <a

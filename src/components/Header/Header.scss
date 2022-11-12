@@ -1,16 +1,66 @@
 .App {
     text-align: center;
   }
-  
+
+  @media screen and (max-width:480px){
+    .App-logo {
+      height: 50px;
+      pointer-events: none;
+      margin: 20px ;
+    }
+    .header {
+      background-color: #282c34;
+      min-height: 100px;
+      width:100vw;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      font-size: calc(10px + 2vmin);
+      color: white;
+    }
+    .header-text {
+      font-family: 'Lato-Regular', sans-serif;
+      font-weight: 400;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      font-size: calc(20px + 0.1vmin);
+      color: white;
+      overflow-wrap: break-word;
+    }
+    .menuWrapper{
+      justify-content: center;
+      flex-direction: row;
+      align-items: center;
+      margin-right: 30px;
+      margin-left: 30px;
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+    .menu{
+      color: white;
+      height: 30px;
+      width:30px;
+      background-color:#282c34;
+    }
+    .menuIcon{
+      color: white;
+      height: 30px;
+      width:30px;
+  background-color:#282c34;
+    }
+  }
+
+  @media screen and (min-width:481px){
   .App-logo {
     height: 80px;
     pointer-events: none;
     margin: 20px ;
   }
-   
   .header {
     background-color: #282c34;
     min-height: 100px;
+    width:100vw;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -18,17 +68,6 @@
     font-size: calc(10px + 2vmin);
     color: white;
   }
-
-.menuWrapper{
-  justify-content: center;
-  flex-direction: row;
-  align-items: center;
-  margin-right: 30px;
-  margin-left: 30px;
-  margin-top: auto;
-  margin-bottom: auto;
-}
-
   .header-text {
     font-family: 'Lato-Regular', sans-serif;
     font-weight: 400;
@@ -38,19 +77,26 @@
     color: white;
     overflow-wrap: break-word;
   }
-
+  .menuWrapper{
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 30px;
+    margin-left: 30px;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
   .menu{
     color: white;
     height: 50px;
     width:50px;
     background-color:#282c34;
   }
-  
   .menuIcon{
     color: white;
     height: 50px;
     width:50px;
 background-color:#282c34;
   }
-  
-  
+
+}

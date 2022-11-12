@@ -4,12 +4,12 @@
     margin-left:auto;
     margin-right: auto;
     padding-bottom: 25vh;
-  }
-  
+
   .eventYearWrapper{
     margin-top:20px;
     width: 50vw;
   }
+
   .eventYearText{
     font-family: 'Lato-Regular', sans-serif;
     font-weight: 400;
@@ -23,51 +23,69 @@
     background-color: #e0e0e0fa;
     margin-top:20px;
     border-style: solid;
-    border-width: 2px;
-    border-radius: 20px;
+    border-width: 0.02rem;
+    border-radius: 2rem;
     min-height: 150px;
-    width: 50vw;
+    width: 80vw;
     margin-left:auto;
     margin-right: auto;
     box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 0.5rem;
   }
 
 .eventItemImageBody{
     background-color: #e0e0e0fa;
     margin-top:20px;
     border-style: solid;
-    border-width: 2px;
-    border-radius: 20px;
+    border-width: 0.02rem;
+    border-radius: 2rem;
     min-height: 250px;
-    width: 50vw;
+    width: 80vw;
     margin-left:auto;
     margin-right: auto;
     box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 0.5rem;
   }
 
+
+@media screen and (max-width:480px){
   .eventItemImg{
-    margin:20px;
+    margin: 10px;
     pointer-events: none;
     float:right;
     border-style: solid;
     border-color: white;
     border-width: 5px;
     box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    max-height: 200px;
-    margin-top: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
+    max-width: calc(80vw - 40px);
+    margin-bottom: 1rem;
   }
+}
+
+@media screen and (min-width:481px){
+  .eventItemImg{
+    margin: 1rem;
+    pointer-events: none;
+    float:right;
+    border-style: solid;
+    border-color: white;
+    border-width: 5px;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    max-height: 12rem;
+    margin-bottom: 1rem;
+  }
+
 
   .eventItemTitle{
     font-family: 'Lato-Regular', sans-serif;
     font-weight: 400;
     font-size: 20px;
-    line-height: 25px;
+    line-height: 22px;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
   }
+}
 
   .eventItemDescText{
     font-family: 'Lato-Regular', sans-serif;
@@ -84,4 +102,5 @@
 
   .eventsInfoBody{
     margin-top: 50px;
-  }
+  } 
+}

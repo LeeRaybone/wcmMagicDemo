@@ -45,10 +45,10 @@ const Events = (): JSX.Element => {
                                 return (
                                     <div className={event.imageUrl ? 'eventItemImageBody' : 'eventItemBody'}>
                                         {event.imageUrl && <img src={event.imageUrl} className="eventItemImg" alt="eventImage" />}
-                                        <h3>
+                                        <h4>
                                             {DateTime.fromFormat(event.date, 'yyyy/MM/dd').toFormat('MMM d')}
                                             {getNumberSuffix(DateTime.fromFormat(event.date, 'yyyy/MM/dd').day)}
-                                        </h3>
+                                        </h4>
                                         <span className="eventItemTitle">
                                             {event.title}
                                             {event.lecture ? ' Lecture' : ''}
@@ -78,7 +78,7 @@ const Events = (): JSX.Element => {
                         </>
                     );
                 })}
-                <div className="eventsInfoBody">
+                <div className="bodyText">
                     <div>
                         <h4>General Information</h4>
                         The above programme may be subject to change in order to accommodate lecture opportunities.

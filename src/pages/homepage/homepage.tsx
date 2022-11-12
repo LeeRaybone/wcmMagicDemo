@@ -6,9 +6,11 @@ import cards from '../../assets/spreadCards.jpg';
 const Homepage = (): JSX.Element => {
     return (
         <div className="appMainContainer">
-            <h1>Welcome to the WCM Website</h1>
+            <div className="pageTitleWrapper">
+                <h1>Welcome to the WCM Website</h1>
+            </div>
             <div className="appMainBodyContainer">
-                <span className="mainBody">
+                <span className="bodyText">
                     <img src={cards} className="cardsImage" alt="cardsImage" />
                     The <b>WCM</b> is a local magic society, made up of over fifty magicians who take pride in being members of one of the most active
                     and successful magical societies in the country.

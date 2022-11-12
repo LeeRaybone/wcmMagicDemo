@@ -7,7 +7,7 @@ const About = (): JSX.Element => {
         <div className="appMainContainer">
             <h1>About the Wolverhampton Circle of Magicians</h1>
             <div className="appMainBodyContainer">
-                <div className="App-body">
+                <div className="bodyText">
                     <h2>History</h2>
                     <div>
                         <img src={'http://www.wcm-magic.co.uk/images/cake.png'} className="image" alt="cakeImage" />

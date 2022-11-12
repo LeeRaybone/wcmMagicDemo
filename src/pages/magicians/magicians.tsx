@@ -10,7 +10,7 @@ const Magicians = (): JSX.Element => {
             <div className="pageTitleWrapper">
                 <h1>Contact details for the Wolverhampton Circle of Magicians members</h1>
             </div>
-            <div className="eventsInfoBody">
+            <div className="bodyText">
                 <p>
                     If you are looking for Magical Entertainment for your special event, then please contact us so we can put you in touch with
                     mystifying magicians from your local area.
@@ -22,7 +22,7 @@ const Magicians = (): JSX.Element => {
                 {magiciansArray.map((magician: any) => {
                     return (
                         <div key={magician.name} className="eventItemImageBody">
-                            {magician.imageUrl && <img src={magician.imageUrl} className="eventItemImg" alt="eventImage" />}
+                            {magician.imageUrl && <img src={magician.imageUrl} className="magiciansItemImg" alt="eventImage" />}
                             <h3>{magician.name}</h3>
                             <div className="eventItemDescWrapper">
                                 <span className="eventItemDescText">

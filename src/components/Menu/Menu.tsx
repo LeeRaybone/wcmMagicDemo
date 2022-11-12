@@ -13,7 +13,6 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { User } from 'firebase/auth';
 
 import './Menu.scss';
 
@@ -106,7 +105,7 @@ const Menu = ({}: MenuProps): JSX.Element => {
                 </ListItem>
                 {user && (
                     <ListItem disablePadding>
-                        <ListItemButton  href="/" onClick={() => signOut()}>
+                        <ListItemButton href="/" onClick={() => signOut()}>
                             <ListItemIcon>
                                 <LogOutIcon />
                             </ListItemIcon>

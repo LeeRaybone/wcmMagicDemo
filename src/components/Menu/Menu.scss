@@ -1,17 +1,17 @@
-.menulogo{
-    height: 100px;
+@media screen and (max-width:480px){
+  .menulogo{
+    height: 75px;
     pointer-events: none;
     margin: 20px ;
   }
 
   .menuContainer{
-    width: 300px;
   }
 
 
   .menuHeader{
     background-color: #282c34;
-    width: 300px;
+    width: 100%;
     min-height: 100px;
     display: flex;
     flex-direction: row;
@@ -25,6 +25,42 @@
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     font-size: 15px;
+    padding-right:20px;
     color: white;
     overflow-wrap: break-word;
   }
+}
+
+@media screen and (min-width:481px){  
+  .menulogo{
+  height: 100px;
+  pointer-events: none;
+  margin: 20px ;
+}
+
+.menuContainer{
+  width: 300px;
+}
+
+
+.menuHeader{
+  background-color: #282c34;
+  width: 300px;
+  min-height: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.userText{
+  font-family: 'Lato-Regular', sans-serif;
+  font-weight: 400;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-size: 15px;
+  padding-right:20px;
+  color: white;
+  overflow-wrap: break-word;
+}
+}
