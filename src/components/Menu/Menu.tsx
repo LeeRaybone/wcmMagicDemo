@@ -20,14 +20,12 @@ import wcmLogo from '../../assets/logoWCMwhite.svg';
 import { AuthContext } from '../../contexts/auth.context';
 import { signOut } from '../../utils/firebase/firebase.utils';
 
-export interface MenuProps {}
-
-const Menu = ({}: MenuProps): JSX.Element => {
+const Menu = (): JSX.Element => {
     const user = useContext(AuthContext);
 
     console.log('file: Menu.tsx ~ line 25 ~ Menu ~ currentUser', user);
     return (
-        <div className="menuContainer">
+        <div>
             <div className="menuHeader">
                 <img src={wcmLogo} className="menulogo" alt="logo" />
                 {user && (
