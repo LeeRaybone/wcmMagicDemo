@@ -40,8 +40,8 @@ const App = (): JSX.Element => {
             <AuthProvider>
                 <CssBaseline enableColorScheme />
                 <div>
-                    <Router>
-                        <nav aria-label="mailbox folders">
+                    <Router basename={window.location.pathname || ''}>
+                        <nav aria-label="menu">
                             <Drawer
                                 open={isOpen}
                                 onClose={toggleDrawer}
