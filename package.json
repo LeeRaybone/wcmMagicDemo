@@ -1,5 +1,5 @@
 {
-  "homepage":"https://leeraybone.github.io/wcmMagicDemo",
+  "homepage": "https://leeraybone.github.io/wcmMagicDemo",
   "name": "wcmweb",
   "version": "0.1.0",
   "private": true,
@@ -17,6 +17,7 @@
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "firebase": "^9.13.0",
+    "gh-pages": "^4.0.0",
     "import": "^0.0.6",
     "luxon": "^3.1.0",
     "react": "^18.2.0",
@@ -30,12 +31,12 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "yarn run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "browserslist": {
     "production": [
@@ -70,7 +71,6 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-native": "^4.0.0",
     "eslint-plugin-simple-import-sort": "^8.0.0",
-    "gh-pages": "^4.0.0",
     "prettier": "^2.7.1",
     "sass-loader": "^13.1.0"
   }
