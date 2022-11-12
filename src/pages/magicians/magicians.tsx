@@ -2,14 +2,44 @@ import React from 'react';
 
 import './magicians.scss';
 
+import jimmycarlo from '../../assets/magicians/jimmy-carlo.jpeg';
+import jonmarshall from '../../assets/magicians/jon-marshall.jpeg';
 import markharrington from '../../assets/magicians/mark-harrington.jpeg';
+import ronpopple from '../../assets/magicians/ron-popple.jpeg';
+import davepitt from '../../assets/magicians/dave-pitt.jpeg';
+import davestevenson from '../../assets/magicians/dave-stevenson.jpeg'
+import davidoakley from '../../assets/magicians/david-oakley.jpeg';
+import russstyler from '../../assets/magicians/russ-styler.jpeg';
+import seancarpenter from '../../assets/magicians/sean-carpenter.jpeg';
+import traciehughes from '../../assets/magicians/tracie-hughes.jpeg';
+
 import { magiciansArray } from '../../info/magicians';
 
 const Magicians = (): JSX.Element => {
     const imageUrl = (imageName: string) => {
         switch (imageName) {
-            case 'markharrington':
+            case 'mark-harrington':
                 return markharrington;
+            case 'jon-marshall':
+                return jonmarshall;
+            case 'jimmy-carlo':
+                return jimmycarlo;
+            case 'ron-popple':
+                return ronpopple;
+                case 'dave-pitt':
+                return  davepitt; 
+            case 'dave-stevenson':
+                return davestevenson;
+            case 'david-oakley':
+                return davidoakley;
+            case 'russ-styler':
+                return russstyler;
+            case 'sean-carpenter':
+                return seancarpenter;
+                case 'tracie-hughes':    
+            return traciehughes 
+            
+            
             default:
                 return undefined;
         }
