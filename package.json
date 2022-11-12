@@ -32,7 +32,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "react-scripts build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": {
     "production": [
@@ -67,6 +69,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-native": "^4.0.0",
     "eslint-plugin-simple-import-sort": "^8.0.0",
+    "gh-pages": "^4.0.0",
     "prettier": "^2.7.1",
     "sass-loader": "^13.1.0"
   }
