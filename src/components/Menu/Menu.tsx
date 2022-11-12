@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import EventsIcon from '@mui/icons-material/Event';
 import JoinIcon from '@mui/icons-material/Group';
 import HomeIcon from '@mui/icons-material/Home';
@@ -38,20 +39,24 @@ const Menu = (): JSX.Element => {
             </div>
             <List>
                 <ListItem disablePadding>
-                    <ListItemButton href="/">
-                        <ListItemIcon>
-                            <HomeIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Home" />
-                    </ListItemButton>
+                    <Link to="/">
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <HomeIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Home" />
+                        </ListItemButton>
+                    </Link>
                 </ListItem>
                 <ListItem disablePadding>
-                    <ListItemButton href="/About">
-                        <ListItemIcon>
-                            <AboutIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="About" />
-                    </ListItemButton>
+                    <Link to="/about">
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <AboutIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="About" />
+                        </ListItemButton>
+                    </Link>
                 </ListItem>
                 <ListItem disablePadding>
                     <ListItemButton href="/Events">

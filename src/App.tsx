@@ -55,7 +55,7 @@ const App = (): JSX.Element => {
                         </nav>
                         <Header openMenu={toggleDrawer} />
                         <Routes>
-                            <Route path="/" element={<HomePage />} />
+                            <Route index path="/" element={<HomePage />} />
                             <Route path="/contact" element={<Contact />} />
                             <Route path="/about" element={<About />} />
                             <Route path="/events" element={<Events />} />
