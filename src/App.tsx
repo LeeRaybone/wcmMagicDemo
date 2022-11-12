@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Outlet, Route, Routes } from 'react-router-dom';
 import { CssBaseline, Drawer, ThemeProvider } from '@mui/material';
 
 import './App.scss';
@@ -40,34 +40,33 @@ const App = (): JSX.Element => {
             <AuthProvider>
                 <CssBaseline enableColorScheme />
                 <div>
-                    <Router basename={window.location.pathname || ''}>
-                        <nav aria-label="menu">
-                            <Drawer
-                                open={isOpen}
-                                onClose={toggleDrawer}
-                                anchor="right"
-                                ModalProps={{
-                                    keepMounted: true, // Better open performance on mobile.
-                                }}
-                            >
-                                <Menu />
-                            </Drawer>
-                        </nav>
-                        <Header openMenu={toggleDrawer} />
-                        <Routes>
-                            <Route index path="/" element={<HomePage />} />
-                            <Route path="/contact" element={<Contact />} />
-                            <Route path="/about" element={<About />} />
-                            <Route path="/events" element={<Events />} />
-                            <Route path="/join" element={<Join />} />
-                            <Route path="/magicians" element={<Magicians />} />
-                            <Route path="/gallery" element={<Gallery />} />
-                            <Route path="/signin" element={<SignIn />} />
-                            <Route path="/members" element={<Members />} />
-                        </Routes>
+                    <nav aria-label="menu">
+                        <Drawer
+                            open={isOpen}
+                            onClose={toggleDrawer}
+                            anchor="right"
+                            ModalProps={{
+                                keepMounted: true, // Better open performance on mobile.
+                            }}
+                        >
+                            <Menu />
+                            <Outlet />
+                        </Drawer>
+                    </nav>
+                    <Header openMenu={toggleDrawer} />
+                    <Routes>
+                        <Route index path="/" element={<HomePage />} />
+                        <Route path="/contact" element={<Contact />} />
+                        <Route path="/about" element={<About />} />
+                        <Route path="/events" element={<Events />} />
+                        <Route path="/join" element={<Join />} />
+                        <Route path="/magicians" element={<Magicians />} />
+                        <Route path="/gallery" element={<Gallery />} />
+                        <Route path="/signin" element={<SignIn />} />
+                        <Route path="/members" element={<Members />} />
+                    </Routes>
 
-                        <Footer />
-                    </Router>
+                    <Footer />
                 </div>
             </AuthProvider>
         </ThemeProvider>
