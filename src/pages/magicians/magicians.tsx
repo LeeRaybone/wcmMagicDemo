@@ -1,10 +1,20 @@
 import React from 'react';
 
 import './magicians.scss';
+
 import markharrington from '../../assets/magicians/mark-harrington.jpeg';
 import { magiciansArray } from '../../info/magicians';
 
 const Magicians = (): JSX.Element => {
+    const imageUrl = (imageName: string) => {
+        switch (imageName) {
+            case 'markharrington':
+                return markharrington;
+            default:
+                return undefined;
+        }
+    };
+
     return (
         <div className="appMainContainer">
             <div className="pageTitleWrapper">
@@ -22,7 +32,7 @@ const Magicians = (): JSX.Element => {
                 {magiciansArray.map((magician: any) => {
                     return (
                         <div key={magician.name} className="eventItemImageBody">
-                            {magician.imageUrl && <img src={magician.imageUrl} className="magiciansItemImg" alt="eventImage" />}
+                            {magician.imageUrl && <img src={imageUrl(magician.imageUrl)} className="magiciansItemImg" alt="eventImage" />}
                             <h3>{magician.name}</h3>
                             <div className="eventItemDescWrapper">
                                 <span className="eventItemDescText">

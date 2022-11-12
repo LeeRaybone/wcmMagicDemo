@@ -1,6 +1,8 @@
 import React from 'react';
-import cake from '.../../assets/cake.png';
+
 import './about.scss';
+
+import cake from '../../assets/cake.png';
 
 const About = (): JSX.Element => {
     return (
