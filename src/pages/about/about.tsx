@@ -10,7 +10,7 @@ const About = (): JSX.Element => {
                 <div className="bodyText">
                     <h2>History</h2>
                     <div>
-                        <img src={'http://www.wcm-magic.co.uk/images/cake.png'} className="image" alt="cakeImage" />
+                        <img src={'../../assets/cake.png'} className="image" alt="cakeImage" />
                         <p>
                             After the Second World War, the interest in Magic throughout the country took hold again and Magical Societies began to
                             spring up with great regularity and Wolverhampton was no exception. Whilst there were neighbouring clubs - the British
