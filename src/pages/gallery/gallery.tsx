@@ -1,21 +1,62 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Carousel from 'react-gallery-carousel';
 
+import 'react-gallery-carousel/dist/index.css';
 import './gallery.scss';
 
 const Gallery = (): JSX.Element => {
+    const [show, setShow] = useState(false);
+
+    const images = [
+        {
+            src: 'http://www.wcm-magic.co.uk/gallery/012.jpg',
+        },
+        {
+            src: 'http://www.wcm-magic.co.uk/gallery/036.jpg',
+        },
+        {
+            src: 'http://www.wcm-magic.co.uk/gallery/060.jpg',
+        },
+        {
+            src: 'http://www.wcm-magic.co.uk/gallery/100_0717.jpg',
+        },
+        {
+            src: 'http://www.wcm-magic.co.uk/gallery/115.jpg',
+        },
+        {
+            src: 'http://www.wcm-magic.co.uk/gallery/117.jpg',
+        },
+        {
+            src: 'http://www.wcm-magic.co.uk/gallery/173.jpg',
+        },
+        {
+            src: 'http://www.wcm-magic.co.uk/gallery/180.jpg',
+        },
+        {
+            src: 'http://www.wcm-magic.co.uk/gallery/195.jpg',
+        },
+        {
+            src: 'http://www.wcm-magic.co.uk/gallery/195.jpg',
+        },
+    ];
+
     return (
         <div className="appMainContainer">
             <div className="pageTitleWrapper">
                 <h1>WCM Gallery</h1>
             </div>
-            <body className="eventsInfoBody">
-                <p>
-                    If you are looking for Magical Entertainment for your special event, then please contact us so we can put you in touch with
-                    mystifying magicians from your local area.
-                    <br />
-                    Alternatively you can click on the links below to visit the websites of our professional entertainers.
-                </p>
-            </body>
+            <div className="appMainBodyContainer">
+                <Carousel
+                    images={images}
+                    isLoop
+                    hasIndexBoard="topRight"
+                    hasMediaButton={false}
+                    hasMediaButtonAtMax="bottomLeft"
+                    hasSizeButton="bottomRight"
+                    hasDotButtons="bottom"
+                    style={{ marginLeft: '5%', marginRight: '5%', height: '900px', width: '90%' }}
+                />
+            </div>
         </div>
     );
 };
