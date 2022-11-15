@@ -1,4 +1,5 @@
 import React from 'react';
+import SendIcon from '@mui/icons-material/Send';
 import { Button, TextField } from '@mui/material';
 
 import './contact.scss';
@@ -74,7 +75,9 @@ const Contact = (): JSX.Element => {
                     <TextField sx={style} id="outlined-basic" label="Message" variant="outlined" margin="normal" multiline rows={5} required />
 
                     <div className="buttonContainer">
-                        <Button variant="contained">Send</Button>
+                        <Button variant="contained" endIcon={<SendIcon />}>
+                            Send
+                        </Button>
                         <Button color="secondary" variant="outlined">
                             Reset
                         </Button>

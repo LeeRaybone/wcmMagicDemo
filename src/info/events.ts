@@ -11,8 +11,7 @@ export const eventsArray: any[] = [
                 date: '2022/09/07',
                 title: 'Michel Hout',
                 lecture: true,
-                imageUrl:
-                    'https://scontent-lcy1-2.xx.fbcdn.net/v/t39.30808-6/307364196_577555407492896_1425907495727387262_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=MzjNDYioIG0AX8IeevM&tn=5nhmo9UaqiV_9kLs&_nc_ht=scontent-lcy1-2.xx&oh=00_AfCBm28-bBv-hLP11XkWID-0C-wihNCftSvNNnmBT2xZFQ&oe=63721326',
+                imageUrl: 'https://vinc.gumlet.io/gallery/blog/michel-637316986922504622.jpg?w=1000&dpr=2.0',
                 description:
                     'Michel has been a corporate magician for 26 years. He has more than 4500 performances in the corporate field. He has been an invitee at the FFFF for 21 years. His creations appeared in numerous magazines (Genii, MAGIC, The Magic Menu) and in many books by David Acer, John Lovick, Paul Rohmany and others. He has performed and lectured in Algeria, Mexico, USA, Canada, France, the Magic Circle in London, Switzerland, Italy and more! He is also the creator of two best-sellers: SOCKS and Priceless. WHAT WILL YOU LEARN IN THIS LECTURE? • Real commercial tricks you can do for REAL AUDIENCES (Tricks with Socks, Jacket, Shoe, cards, gum, billiard ball and more) • TIPS to work in corporate events • Some real advise for the CLASSIC FORCE and what to do if (or when) you will miss it! • How to approach a group and…when to do so! Michel shares the real work. Even if the tricks are all good and commercial, what people remember is that he gives tons of tips he learned from more than 4500 performances.',
                 visitors: true,
@@ -85,8 +84,7 @@ export const eventsArray: any[] = [
                 date: '2023/02/22',
                 title: 'Matt Wright',
                 lecture: true,
-                imageUrl:
-                    'https://scontent-lcy1-2.xx.fbcdn.net/v/t39.30808-6/246703138_401955618125759_9170052346933734073_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=e3f864&_nc_ohc=t0lG9xSxrmMAX9N3LE4&_nc_ht=scontent-lcy1-2.xx&oh=00_AfB2Rv2tuzb4ct4PuD6JIgp9uiJ6tnvk4nFHMY-Vwl5JVw&oe=6370E418',
+                imageUrl: 'https://magiarkivet.se/wp-content/uploads/2016/01/matthew-1.jpg',
             },
             {
                 date: '2022/03/08',

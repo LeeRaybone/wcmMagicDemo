@@ -45,11 +45,11 @@ const SignIn = (): JSX.Element => {
             navigate('/signin');
         }
     }, []);
+
     const handleSignIn = async (event: any): Promise<void> => {
         event.preventDefault();
         try {
             const response: UserCredential | null = await signInAuthUserWithEmailAndPassword(email, password);
-            console.log('file: signIn.tsx ~ line 41 ~ handleSignIn ~ response', response);
 
             if (response) {
                 navigate('/members');

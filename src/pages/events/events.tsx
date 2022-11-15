@@ -37,9 +37,7 @@ const Events = (): JSX.Element => {
                 {eventsArray.map((eventYear: any) => {
                     return (
                         <>
-                            <div className="eventYearWrapper">
-                                <h2>{eventYear.year}</h2>
-                            </div>
+                           <h2>{eventYear.year}</h2>
                             {eventYear.events.map((event: any) => {
                                 console.log('event Image >>> ', event.title, event.imageUrl);
                                 return (

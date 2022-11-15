@@ -54,6 +54,7 @@ margin: 1rem;
   padding-bottom: 5rem;
 }
 
+
 @media screen and (max-width:480px){
   html, body{
     width:100%;
@@ -104,6 +105,19 @@ margin: 1rem;
     margin: 1rem;
   }
 
+  h5{
+    font-family: 'Lato-Bold', sans-serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    color:#282c34;
+    margin-bottom: 0.75rem;
+    margin-top: 2rem;
+  }
+  
+
   .bodyText{
     margin: 0;
       color: rgba(0, 0, 0, 0.87);
@@ -114,6 +128,26 @@ margin: 1rem;
       letter-spacing: 0.00938em;
       background-color: #fff;
       margin: 2rem;
+  }
+
+.subbodyText{
+  color: rgba(0, 0, 0, 0.87);
+  font-family: "Lato";
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: 0.00938em;
+  background-color: #fff;
+  padding-bottom: 1rem;
+
+}
+
+  .appSubBodyContainer{
+    width:60vw;
+    margin-left:5vw;
+    margin-right:5vw;
+    text-align: center;
+    padding-bottom: 5rem;
   }
  
   }
@@ -168,6 +202,19 @@ h4{
   margin: 1rem;
 }
 
+h5{
+  font-family: 'Lato-Bold', sans-serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  color:#282c34;
+  margin-bottom: 0.75rem;
+  margin-top: 2rem;
+}
+
+
 .bodyText{
   margin: 0;
     color: rgba(0, 0, 0, 0.87);
@@ -179,4 +226,25 @@ h4{
     background-color: #fff;
     margin:3rem;
 }
+
+.subbodyText{
+    color: rgba(0, 0, 0, 0.87);
+    font-family: "Lato";
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    letter-spacing: 0.00938em;
+    background-color: #fff;
+    padding-bottom: 1rem;
+
+}
+
+.appSubBodyContainer{
+  width:75vw;
+  margin-left:5vw;
+  margin-right:5vw;
+  text-align: center;
+  padding-bottom: 5rem;
+}
+
 }
