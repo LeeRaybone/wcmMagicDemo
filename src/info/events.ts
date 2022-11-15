@@ -21,8 +21,8 @@ export const eventsArray: any[] = [
                 date: '2022/10/05',
                 title: 'Lee Hathaway',
                 lecture: true,
-                imageUrl:
-                    'https://scontent-lcy1-2.xx.fbcdn.net/v/t39.30808-6/310741017_10158782436415849_3693440669916261311_n.jpg?stp=cp6_dst-jpg_p960x960&_nc_cat=110&ccb=1-7&_nc_sid=5cd70e&_nc_ohc=uZvmOME0GEoAX8_mcVL&_nc_ht=scontent-lcy1-2.xx&oh=00_AfBpjW9P2p7VcXyYrAnjLDJUz-16bFV6JLOdwbi3Vka_Bg&oe=6372249F',
+                imageName: 'leehathaway01',
+                imageLocation: 'lectures/',
                 link: 'https://l.facebook.com/l.php?u=https%3A%2F%2Fyoutu.be%2FX7lQvPKb9jA%3Ffbclid%3DIwAR1mqWMksSEXiU1pz__QCYIM_O7F-EP2nNXcJl2j5Xmn2KjfFWhNntCsP98&h=AT2jh2t6yVFrUAomV_BX_RqY3HK6NTgeM1vlo2fUIqJVecu1of8i87z5QChcstJv0pjNJW0-EZbljUXZ87XOBMmZbWcVHdk21Q7NhIF-uoDSA2cR98avGbQx3AkHRJiTT02lzZ-zRQ&__tn__=%2CmH-R&c[0]=AT0KwXJc-GO-jyPf3hoAWOb7axRsNNSjmfvOcR6QvWEPAbVudoCLemXoOJtP8NtDOn7V5PkzKExbZ1gRkIGNJFXCYeA1w8lpgTVgxMFXaRhNhEClz4itZsvoCgPEf2tB527s_kd_qdxZTCxRBHJcGxVJ9rN06BcZMKuTShoQ81O01v7i6Dm6-XqjEvSYJqJbXXUIgl89HgpYq924gsDFxNo',
                 linkText: 'Video from Lee Hathaway',
                 visitors: true,

@@ -12,10 +12,12 @@ const Magician = ({ magician }: MagicianProps): JSX.Element => {
     const [image, setImage] = useState('');
 
     useEffect(() => {
-        (async () => {
+        const fetchImage = async (): Promise<void> => {
             const tempImage = await getImage('magicians/', magician.imageUrl);
             setImage(tempImage);
-        })();
+        };
+
+        fetchImage().catch(console.error);
     }, []);
 
     return (

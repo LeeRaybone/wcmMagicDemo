@@ -37,11 +37,11 @@ const Events = (): JSX.Element => {
                 {eventsArray.map((eventYear: any) => {
                     return (
                         <>
-                           <h2>{eventYear.year}</h2>
+                            <h2>{eventYear.year}</h2>
                             {eventYear.events.map((event: any) => {
                                 console.log('event Image >>> ', event.title, event.imageUrl);
                                 return (
-                                    <div className={event.imageUrl ? 'eventItemImageBody' : 'eventItemBody'}>
+                                    <div className={event.imageUrl ?? event.imageName ? 'eventItemImageBody' : 'eventItemBody'}>
                                         {event.imageUrl && <img src={event.imageUrl} className="eventItemImg" alt="eventImage" />}
                                         <h4>
                                             {DateTime.fromFormat(event.date, 'yyyy/MM/dd').toFormat('MMM d')}

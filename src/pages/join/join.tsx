@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './join.scss';
 
 import { ReactComponent as PDFIcon } from '../../assets/PDFfileIcon.svg';
+import { getImage } from '../../utils/wcmUtils/image.utils';
 
 const Join = (): JSX.Element => {
+    const [image, setImage] = useState('');
+
+    useEffect(() => {
+        const fetchImage = async (): Promise<void> => {
+            const tempImage = await getImage('gallery/', 'wcm-group-photo.jpg');
+            setImage(tempImage);
+        };
+
+        fetchImage().catch(console.error);
+    }, []);
+
     return (
         <div className="appMainContainer">
             <div className="pageTitleWrapper">
@@ -33,7 +45,7 @@ const Join = (): JSX.Element => {
                         <PDFIcon height={50} />
                     </a>
                 </p>
-                <img className="image80vw" src={'http://www.wcm-magic.co.uk/images/wcm-group-photo.jpg'} />
+                <img className="image80vw" src={image} />
             </div>
         </div>
     );
