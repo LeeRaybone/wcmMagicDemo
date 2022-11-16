@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import EventsIcon from '@mui/icons-material/Event';
 import JoinIcon from '@mui/icons-material/Group';
 import HomeIcon from '@mui/icons-material/Home';
@@ -18,21 +18,35 @@ import './Menu.scss';
 
 import wcmLogo from '../../assets/logoWCMwhite.svg';
 import { AuthContext } from '../../contexts/auth.context';
-import { signOut } from '../../utils/firebase/firebase.utils';
+import { getUserInfo, signOut } from '../../utils/firebase/firebase.utils';
+import { WcmUser } from '../../App';
 
 const Menu = (): JSX.Element => {
     const user = useContext(AuthContext);
-
-    console.log('file: Menu.tsx ~ line 25 ~ Menu ~ currentUser', user);
+    const [currentUser, setCurrentUser] = useState<WcmUser | null>(null);
+    
+    useEffect(() => {
+        const fetchUserData = async (): Promise<void> => {
+            if (user) {
+                const data = await getUserInfo(user?.uid);
+                setCurrentUser(data);
+            }
+        };
+        // call the function
+        fetchUserData()
+            // make sure to catch any error
+            .catch(console.error);
+    }, [user]);
+    
     return (
         <div>
             <div className="menuHeader">
                 <img src={wcmLogo} className="menulogo" alt="logo" />
-                {user && (
+                {currentUser && (
                     <span className="userText">
                         Welcome
                         <br />
-                        {user.displayName}
+                        {currentUser.displayName}
                     </span>
                 )}
             </div>
