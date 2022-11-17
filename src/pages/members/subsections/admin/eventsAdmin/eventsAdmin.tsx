@@ -125,6 +125,8 @@ const EventsAdmin = (): JSX.Element => {
         setLecture(false);
         setOpenNight(false);
         setVisitors(false);
+        setSelectedEvent(null);
+        setSelectedIndex(null);
     };
 
     return (
@@ -251,9 +253,16 @@ const EventsAdmin = (): JSX.Element => {
                             }}
                         />
                         <div className="flexRow">
-                            <BootstrapButton sx={style} variant="contained" onClick={() => {}}>
-                                Update
-                            </BootstrapButton>
+                            {selectedEvent && (
+                                <BootstrapButton sx={style} variant="contained" onClick={() => {}}>
+                                    Update
+                                </BootstrapButton>
+                            )}
+                            {!selectedEvent && (
+                                <BootstrapButton sx={style} variant="contained" onClick={() => {}}>
+                                    Add
+                                </BootstrapButton>
+                            )}
                             <BootstrapButton sx={style} color="secondary" variant="outlined" onClick={resetFormFields}>
                                 Reset
                             </BootstrapButton>
