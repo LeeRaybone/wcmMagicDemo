@@ -74,7 +74,7 @@ const SignIn = (): JSX.Element => {
                 default:
                     setIsError(true);
                     setErrorMessage('Unknown error please contact ...');
-                    console.log('file: signIn.tsx ~ line 41 ~ handleSignIn ~ error.code', error.code);
+                    // console.log('file: signIn.tsx ~ line 41 ~ handleSignIn ~ error.code', error.code);
                     break;
             }
         }

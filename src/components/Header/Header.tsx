@@ -11,7 +11,6 @@ export interface HeaderProps {
 
 const Header = ({ openMenu }: HeaderProps): JSX.Element => {
     const handleMenu = (): void => {
-        console.log('handleMenu');
         openMenu();
     };
 

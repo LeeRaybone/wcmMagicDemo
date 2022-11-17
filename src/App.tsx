@@ -27,7 +27,6 @@ const App = (): JSX.Element => {
     }, []);
 
     const toggleDrawer = (): void => {
-        console.log('file: App.tsx ~ line 19 ~ toggleDrawer ~ isOpen', isOpen);
         setIsOpen((prev) => !prev);
     };
 

@@ -11,6 +11,7 @@ export type WcmUser = {
 };
 
 export type WcmEvent = {
+    id: string;
     date: DateTime;
     description?: string;
     imageFilename?: string;

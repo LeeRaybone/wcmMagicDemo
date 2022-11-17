@@ -23,7 +23,6 @@ const Events = (): JSX.Element => {
                         d.date <= DateTime.fromFormat(`01/08/${endYear}`, 'dd/MM/yyyy')
                 )
                 .sort((a: WcmEvent, b: WcmEvent): number => (a.date > b.date ? 1 : -1));
-            console.log('file: events.tsx ~ line 35 ~ fetchEventData ~ data', { ...filteredData });
             const startYearEvents = filteredData.filter((d) => d.date.year === startYear);
             const endYearEvents = filteredData.filter((d) => d.date.year === endYear);
             const groupedEvents = [

@@ -10,8 +10,8 @@ import {
     User,
     UserCredential,
 } from 'firebase/auth';
-import { collection, doc, DocumentData, DocumentReference, getDoc, getFirestore, onSnapshot, setDoc } from 'firebase/firestore';
-import { getStorage } from 'firebase/storage';
+import { collection, doc, DocumentData, DocumentReference, getDoc, getFirestore, onSnapshot, setDoc, Timestamp } from 'firebase/firestore';
+import { getStorage, ref, uploadBytes } from 'firebase/storage';
 import { DateTime } from 'luxon';
 
 import { WcmEvent, WcmMagician, WcmUser } from '../wcmTypes';
@@ -41,8 +41,6 @@ export const firebaseStorage = getStorage();
 // const usersCollection = collection(firestore, 'users');
 
 export const signInAuthUserWithEmailAndPassword = async (email: string, password: string): Promise<UserCredential | null> => {
-    console.log('file: firebase.utils.ts ~ line 29 ~ signInAuthUserWithEmailAndPassword ~ password', password);
-    console.log('file: firebase.utils.ts ~ line 29 ~ signInAuthUserWithEmailAndPassword ~ email', email);
     if (!email || !password) return null;
     const userCredential: UserCredential = await signInWithEmailAndPassword(auth, email, password);
     const user = auth.currentUser;
@@ -51,7 +49,6 @@ export const signInAuthUserWithEmailAndPassword = async (email: string, password
             displayName: 'Test User WCM',
         });
     }
-    console.log('file: firebase.utils.ts ~ line 33 ~ signInAuthUserWithEmailAndPassword ~ signInResponse', userCredential);
 
     return userCredential;
 };
@@ -80,7 +77,7 @@ export const createUserDocumentFromAuth = async (userAuth: User, additionalInfor
                 ...additionalInformation,
             });
         } catch (error: any) {
-            console.log('error creating the user', error.message);
+            // console.log('error creating the user', error.message);
         }
     }
 
@@ -109,9 +106,7 @@ export const getAllUsers = async (): Promise<WcmUser[]> => {
                     fullMember: userDoc.data().fullMember,
                 };
                 allUsers.push(tempUser);
-                console.log('tempUser >>> ', { ...tempUser });
             });
-            console.log('users >>> ', { ...allUsers });
             resolve(allUsers);
         });
     });
@@ -183,6 +178,7 @@ export const getAllEvents = async (): Promise<WcmEvent[]> => {
         onSnapshot(eventsRef, (docsSnap) => {
             docsSnap.forEach((eventDoc) => {
                 const tempEvent: WcmEvent = {
+                    id: eventDoc.id,
                     date: DateTime.fromSeconds(eventDoc.data().date?.seconds),
                     description: eventDoc.data().description ?? null,
                     imageFilename: eventDoc.data().imageFilename ?? null,
@@ -219,4 +215,47 @@ export const getAllMagicians = async (): Promise<WcmMagician[]> => {
             resolve(allMagicians);
         });
     });
+};
+
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export const updateEvent = async (event: WcmEvent, imageAsFile?: any): Promise<boolean | null> => {
+    let docSuccess = true;
+
+    if (event.id) {
+        const docRef = doc(firestore, 'events', event.id);
+
+        const data = {
+            date: Timestamp.fromDate(event.date.toJSDate()),
+            description: event.description,
+            imageFilename: event.imageFilename,
+            lecture: event.lecture,
+            linkText: event.linkText,
+            linkUrl: event.linkUrl,
+            openNight: event.openNight,
+            theme: event.theme,
+            title: event.title,
+            visitors: event.visitors,
+        };
+
+        try {
+            await setDoc(docRef, data, { merge: true });
+        } catch (error: any) {
+            docSuccess = false;
+            // console.log('error creating the user', error.message);
+        }
+        if (docSuccess && imageAsFile !== '') {
+            const storageRef = ref(firebaseStorage, `events/${imageAsFile.name}`);
+
+            const uploadTask = await uploadBytes(storageRef, imageAsFile);
+
+            if (uploadTask.metadata.name === event.imageFilename) {
+                return true;
+            }
+        }
+
+        if (docSuccess && imageAsFile === '') {
+            return true;
+        }
+    }
+    return null;
 };

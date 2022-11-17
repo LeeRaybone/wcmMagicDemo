@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button, Checkbox, FormControlLabel, List, ListItemText, MenuItem, styled, TextField } from '@mui/material';
 import { DateTime } from 'luxon';
 
-import { getAllEvents } from '../../../../../utils/firebase/firebase.utils';
+import { getAllEvents, updateEvent } from '../../../../../utils/firebase/firebase.utils';
 import { WcmEvent } from '../../../../../utils/wcmTypes';
 
 const style = {
@@ -57,6 +57,7 @@ const EventsAdmin = (): JSX.Element => {
     const [linkText, setLinkText] = useState('');
     const [linkUrl, setLinkUrl] = useState('');
     const [imageFilename, setImageFilename] = useState('');
+    const [imageAsFile, setImageAsFile] = useState('');
 
     const [lecture, setLecture] = useState(false);
     const [openNight, setOpenNight] = useState(false);
@@ -95,12 +96,11 @@ const EventsAdmin = (): JSX.Element => {
         fetchEventData()
             // make sure to catch any error
             .catch(console.error);
-    }, []);
+    }, [isSuccess, isError]);
 
     useEffect(() => {
         if (selectedIndex !== null) {
             setSelectedEvent(eventsArray[selectedIndex]);
-            console.log('file: eventsAdmin.tsx ~ line 92 ~ useEffect ~ eventsArray[selectedIndex]', eventsArray[selectedIndex]);
             setTitle(eventsArray[selectedIndex].title);
             setTheme(eventsArray[selectedIndex].theme ?? '');
             setDescription(eventsArray[selectedIndex].description ?? '');
@@ -111,6 +111,8 @@ const EventsAdmin = (): JSX.Element => {
             setLecture(eventsArray[selectedIndex].lecture ?? false);
             setOpenNight(eventsArray[selectedIndex].openNight ?? false);
             setVisitors(eventsArray[selectedIndex].visitors ?? false);
+            setIsError(false);
+            setIsSuccess(false);
         }
     }, [selectedIndex]);
 
@@ -127,6 +129,40 @@ const EventsAdmin = (): JSX.Element => {
         setVisitors(false);
         setSelectedEvent(null);
         setSelectedIndex(null);
+        setIsError(false);
+        setIsSuccess(false);
+    };
+
+    const handleUpdate = (): void => {
+        if (selectedIndex !== null) {
+            const tempEvent: WcmEvent = {
+                id: eventsArray[selectedIndex].id,
+                date: DateTime.fromFormat(date, 'dd/MM/yyyy'),
+                description: description,
+                imageFilename: imageFilename,
+                lecture: lecture,
+                linkText: linkText,
+                linkUrl: linkUrl,
+                openNight: openNight,
+                theme: theme,
+                title: title,
+                visitors: visitors,
+            };
+            const successResponse = updateEvent(tempEvent, imageAsFile);
+            if (!successResponse) {
+                setIsError(true);
+                setErrorMessage('Update event encountered an error');
+            } else {
+                setIsSuccess(true);
+                setSuccessMessage('Event details updated successfully');
+            }
+        }
+    };
+    const handleImageAsFile = (e: any): void => {
+        const image = e.target.files[0];
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        setImageAsFile((imageFile) => image);
+        setImageFilename(image.name);
     };
 
     return (
@@ -206,6 +242,10 @@ const EventsAdmin = (): JSX.Element => {
                                 setImageFilename(e.target.value);
                             }}
                         />
+                        <Button variant="contained" component="label">
+                            Upload File
+                            <input type="file" hidden onChange={handleImageAsFile} />
+                        </Button>
                         <TextField
                             sx={style}
                             id="outlined-basic"
@@ -252,9 +292,10 @@ const EventsAdmin = (): JSX.Element => {
                                 setOpenNight(!openNight);
                             }}
                         />
+
                         <div className="flexRow">
                             {selectedEvent && (
-                                <BootstrapButton sx={style} variant="contained" onClick={() => {}}>
+                                <BootstrapButton sx={style} variant="contained" onClick={handleUpdate}>
                                     Update
                                 </BootstrapButton>
                             )}

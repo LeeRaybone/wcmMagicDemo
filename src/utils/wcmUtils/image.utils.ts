@@ -17,8 +17,9 @@ export const getAllImages = async (location: string): Promise<any[]> => {
                 .then((urls) => {
                     resolve(urls);
                 })
-                .catch((err) => {
-                    console.log(err);
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                .catch((_err) => {
+                    // console.log(err);
                     return null;
                 });
         });
