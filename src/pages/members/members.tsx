@@ -4,9 +4,9 @@ import { Box, Tab, Tabs } from '@mui/material';
 
 import './members.scss';
 
-import { WcmUser } from '../../App';
 import { AuthContext } from '../../contexts/auth.context';
 import { getUserInfo } from '../../utils/firebase/firebase.utils';
+import { WcmUser } from '../../utils/wcmTypes';
 
 import Account from './subsections/account/account';
 import Admin from './subsections/admin/admin';

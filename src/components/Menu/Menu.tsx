@@ -19,12 +19,12 @@ import './Menu.scss';
 import wcmLogo from '../../assets/logoWCMwhite.svg';
 import { AuthContext } from '../../contexts/auth.context';
 import { getUserInfo, signOut } from '../../utils/firebase/firebase.utils';
-import { WcmUser } from '../../App';
+import { WcmUser } from '../../utils/wcmTypes';
 
 const Menu = (): JSX.Element => {
     const user = useContext(AuthContext);
     const [currentUser, setCurrentUser] = useState<WcmUser | null>(null);
-    
+
     useEffect(() => {
         const fetchUserData = async (): Promise<void> => {
             if (user) {
@@ -37,7 +37,7 @@ const Menu = (): JSX.Element => {
             // make sure to catch any error
             .catch(console.error);
     }, [user]);
-    
+
     return (
         <div>
             <div className="menuHeader">

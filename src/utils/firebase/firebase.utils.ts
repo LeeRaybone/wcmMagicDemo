@@ -14,7 +14,7 @@ import { collection, doc, DocumentData, DocumentReference, getDoc, getFirestore,
 import { getStorage } from 'firebase/storage';
 import { DateTime } from 'luxon';
 
-import { WcmUser } from '../../App';
+import { WcmEvent, WcmMagician, WcmUser } from '../wcmTypes';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -173,4 +173,50 @@ export const updateUserEmailAndName = async (email: string, displayName: string 
             });
     }
     return null;
+};
+
+export const getAllEvents = async (): Promise<WcmEvent[]> => {
+    return new Promise<WcmEvent[]>((resolve) => {
+        const eventsRef = collection(firestore, `events`);
+        const allEvents: WcmEvent[] = [];
+
+        onSnapshot(eventsRef, (docsSnap) => {
+            docsSnap.forEach((eventDoc) => {
+                const tempEvent: WcmEvent = {
+                    date: DateTime.fromSeconds(eventDoc.data().date?.seconds),
+                    description: eventDoc.data().description ?? null,
+                    imageFilename: eventDoc.data().imageFilename ?? null,
+                    lecture: eventDoc.data().lecture ?? false,
+                    linkText: eventDoc.data().linkText ?? null,
+                    linkUrl: eventDoc.data().linkUrl ?? null,
+                    openNight: eventDoc.data().openNight ?? false,
+                    theme: eventDoc.data().theme ?? null,
+                    title: eventDoc.data().title,
+                    visitors: eventDoc.data().visitors ?? false,
+                };
+                allEvents.push(tempEvent);
+            });
+            resolve(allEvents);
+        });
+    });
+};
+
+export const getAllMagicians = async (): Promise<WcmMagician[]> => {
+    return new Promise<WcmMagician[]>((resolve) => {
+        const eventsRef = collection(firestore, `magicians`);
+        const allMagicians: WcmMagician[] = [];
+
+        onSnapshot(eventsRef, (docsSnap) => {
+            docsSnap.forEach((eventDoc) => {
+                const tempMagician: WcmMagician = {
+                    name: eventDoc.data().name ?? null,
+                    website1: eventDoc.data().website1 ?? null,
+                    website2: eventDoc.data().website2 ?? null,
+                    imageFilename: eventDoc.data().imageFilename ?? null,
+                };
+                allMagicians.push(tempMagician);
+            });
+            resolve(allMagicians);
+        });
+    });
 };

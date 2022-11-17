@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { Outlet, Route, Routes } from 'react-router-dom';
 import { CssBaseline, Drawer, ThemeProvider } from '@mui/material';
-import { DateTime } from 'luxon';
 
 import './App.scss';
 
@@ -19,16 +18,6 @@ import Magicians from './pages/magicians/magicians';
 import Members from './pages/members/members';
 import SignIn from './pages/signIn/signIn';
 import { appTheme } from './theme/theme';
-
-export type WcmUser = {
-    userId?: string;
-    admin?: boolean;
-    createdAt?: DateTime;
-    dateJoined?: DateTime;
-    name?: string;
-    email?: string;
-    fullMember?: boolean;
-};
 
 const App = (): JSX.Element => {
     const [isOpen, setIsOpen] = React.useState(false);

@@ -1,33 +1,49 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { DateTime } from 'luxon';
 
 import './events.scss';
 
-import { eventsArray } from '../../info/events';
+import { getAllEvents } from '../../utils/firebase/firebase.utils';
+import { WcmEvent, WcmEventYear } from '../../utils/wcmTypes';
 
-const getNumberSuffix = (num: number): string => {
-    const th = 'th';
-    const rd = 'rd';
-    const nd = 'nd';
-    const st = 'st';
-
-    if (num === 11 || num === 12 || num === 13) return th;
-
-    const lastDigit = num.toString().slice(-1);
-
-    switch (lastDigit) {
-        case '1':
-            return st;
-        case '2':
-            return nd;
-        case '3':
-            return rd;
-        default:
-            return th;
-    }
-};
+import EventItem from './eventItem/eventItem';
 
 const Events = (): JSX.Element => {
+    const [eventsArray, setEventsArray] = useState<WcmEventYear[]>([]);
+    const [startYear] = useState(2022);
+    const [endYear] = useState(2023);
+
+    useEffect(() => {
+        const fetchEventData = async (): Promise<void> => {
+            const data = await getAllEvents();
+            const filteredData = data
+                .filter(
+                    (d) =>
+                        d.date >= DateTime.fromFormat(`30/06/${startYear}`, 'dd/MM/yyyy') &&
+                        d.date <= DateTime.fromFormat(`01/08/${endYear}`, 'dd/MM/yyyy')
+                )
+                .sort((a: WcmEvent, b: WcmEvent): number => (a.date > b.date ? 1 : -1));
+            console.log('file: events.tsx ~ line 35 ~ fetchEventData ~ data', { ...filteredData });
+            const startYearEvents = filteredData.filter((d) => d.date.year === startYear);
+            const endYearEvents = filteredData.filter((d) => d.date.year === endYear);
+            const groupedEvents = [
+                {
+                    year: startYear,
+                    events: startYearEvents,
+                },
+                {
+                    year: endYear,
+                    events: endYearEvents,
+                },
+            ];
+            setEventsArray(groupedEvents);
+        };
+        // call the function
+        fetchEventData()
+            // make sure to catch any error
+            .catch(console.error);
+    }, []);
+
     return (
         <div className="appMainContainer">
             <div className="pageTitleWrapper">
@@ -38,40 +54,8 @@ const Events = (): JSX.Element => {
                     return (
                         <>
                             <h2>{eventYear.year}</h2>
-                            {eventYear.events.map((event: any) => {
-                                console.log('event Image >>> ', event.title, event.imageUrl);
-                                return (
-                                    <div className={event.imageUrl ?? event.imageName ? 'eventItemImageBody' : 'eventItemBody'}>
-                                        {event.imageUrl && <img src={event.imageUrl} className="eventItemImg" alt="eventImage" />}
-                                        <h4>
-                                            {DateTime.fromFormat(event.date, 'yyyy/MM/dd').toFormat('MMM d')}
-                                            {getNumberSuffix(DateTime.fromFormat(event.date, 'yyyy/MM/dd').day)}
-                                        </h4>
-                                        <span className="eventItemTitle">
-                                            {event.title}
-                                            {event.lecture ? ' Lecture' : ''}
-                                            {event.competition ? ' Competition' : ''}
-                                        </span>
-                                        <div className="eventItemDescWrapper">
-                                            <span className="eventItemDescText">{event.description}</span>
-                                        </div>
-                                        {event.link && (
-                                            <div className="eventItemDescWrapper">
-                                                <a className="appLinks" href={event.link} target="_blank" rel="noopener noreferrer">
-                                                    {event.linkText}
-                                                </a>
-                                            </div>
-                                        )}
-                                        {event.visitors && (
-                                            <div className="eventItemDescWrapper">
-                                                <span className="eventItemDescText">
-                                                    Visiting magicians are welcome for a fee of just £5.00. The lecture starts at 8-00pm at the ECC
-                                                    Sports & Social Club, Showell Road, Wolverhampton, WV10 9LE
-                                                </span>
-                                            </div>
-                                        )}
-                                    </div>
-                                );
+                            {eventYear.events.map((event: WcmEvent) => {
+                                return <EventItem event={event} />;
                             })}{' '}
                         </>
                     );

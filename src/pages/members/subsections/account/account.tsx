@@ -5,7 +5,7 @@ import { Button, TextField } from '@mui/material';
 
 import '../../members.scss';
 
-import { WcmUser } from '../../../../App';
+import { WcmUser } from '../../../../utils/wcmTypes';
 import { updateUserEmailAndName, updateUserPassword } from '../../../../utils/firebase/firebase.utils';
 
 export interface AccountProps {

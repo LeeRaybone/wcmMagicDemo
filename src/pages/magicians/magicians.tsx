@@ -1,12 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './magicians.scss';
 
-import { magiciansArray } from '../../info/magicians';
+import { getAllMagicians } from '../../utils/firebase/firebase.utils';
+import { WcmMagician } from '../../utils/wcmTypes';
 
 import Magician from './magician/magician';
 
 const Magicians = (): JSX.Element => {
+    const [magiciansArray, setMagiciansArray] = useState<WcmMagician[]>([]);
+
+    useEffect(() => {
+        const fetchMagicianData = async (): Promise<void> => {
+            const data = await getAllMagicians();
+            setMagiciansArray(data.sort((a: WcmMagician, b: WcmMagician) => a.name.localeCompare(b.name)));
+        };
+        // call the function
+        fetchMagicianData()
+            // make sure to catch any error
+            .catch(console.error);
+    }, []);
+
     return (
         <div className="appMainContainer">
             <div className="pageTitleWrapper">
@@ -21,7 +35,7 @@ const Magicians = (): JSX.Element => {
                 </p>
             </div>
             <div className="eventBody">
-                {magiciansArray.map((magician: any) => {
+                {magiciansArray.map((magician: WcmMagician) => {
                     return <Magician key={magician.name} magician={magician} />;
                 })}
             </div>
