@@ -174,7 +174,7 @@ const EventsAdmin = (): JSX.Element => {
                         <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
                             {eventsArray.map((e, index) => {
                                 return (
-                                    <MenuItem onClick={() => setSelectedIndex(index)} selected={selectedIndex === index}>
+                                    <MenuItem key={index} onClick={() => setSelectedIndex(index)} selected={selectedIndex === index}>
                                         <ListItemText primary={e.date.toFormat('dd/MM/yyyy').toString()} secondary={e.title} />
                                     </MenuItem>
                                 );
