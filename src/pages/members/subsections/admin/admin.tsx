@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Box, Tab, Tabs } from '@mui/material';
 
+import EventAdmin from './eventsAdmin/eventsAdmin';
 import UserAdmin from './userAdmin/userAdmin';
 
 const Admin = (): JSX.Element => {
@@ -29,7 +30,7 @@ const Admin = (): JSX.Element => {
             <div className="appSubBodyContainer">
                 <Tabs value={tabIndex} onChange={handleTabChange} orientation="horizontal">
                     <Tab label="User Admin" />
-                    <Tab label="Message" />
+                    <Tab label="Event Admin" />
                     <Tab label="Admin" />
                 </Tabs>
                 {tabIndex === 0 && (
@@ -39,7 +40,7 @@ const Admin = (): JSX.Element => {
                 )}
                 {tabIndex === 1 && (
                     <Box>
-                        <div>message page</div>
+                        <EventAdmin />
                     </Box>
                 )}
             </div>
