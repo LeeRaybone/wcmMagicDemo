@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button, Checkbox, FormControlLabel, List, ListItemText, MenuItem, styled, TextField } from '@mui/material';
 import { DateTime } from 'luxon';
 
-import { getAllEvents, updateEvent } from '../../../../../utils/firebase/firebase.utils';
+import { createNewDocument, deleteDocument, getAllEvents, updateEvent } from '../../../../../utils/firebase/firebase.utils';
 import { WcmEvent } from '../../../../../utils/wcmTypes';
 
 const style = {
@@ -40,8 +40,12 @@ const BootstrapButton = styled(Button)({
 
 const EventsAdmin = (): JSX.Element => {
     const [eventsArray, setEventsArray] = useState<WcmEvent[]>([]);
-    const [startYear] = useState(2022);
-    const [endYear] = useState(2023);
+    const dateNow = DateTime.now(); /// DateTime.fromFormat("03/04/2023", 'dd/MM/yyyy');
+    const currYear = dateNow.year;
+    const prevYear = dateNow.year - 1;
+    const nextYear = dateNow.year + 1;
+    const [startYear] = useState(dateNow.month > 6 && dateNow.month <= 12 ? currYear.toString() : prevYear.toString());
+    const [endYear] = useState(dateNow.month > 6 && dateNow.month <= 12 ? nextYear.toString() : currYear.toString());
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
     const [selectedEvent, setSelectedEvent] = useState<WcmEvent | null>(null);
 
@@ -113,6 +117,7 @@ const EventsAdmin = (): JSX.Element => {
             setVisitors(eventsArray[selectedIndex].visitors ?? false);
             setIsError(false);
             setIsSuccess(false);
+            console.log('file: eventsAdmin.tsx ~ line 181 ~ handleUpdate ~  typeof (tempEvent)', typeof eventsArray[selectedIndex]);
         }
     }, [selectedIndex]);
 
@@ -148,6 +153,7 @@ const EventsAdmin = (): JSX.Element => {
                 title: title,
                 visitors: visitors,
             };
+
             const successResponse = updateEvent(tempEvent, imageAsFile);
             if (!successResponse) {
                 setIsError(true);
@@ -155,9 +161,53 @@ const EventsAdmin = (): JSX.Element => {
             } else {
                 setIsSuccess(true);
                 setSuccessMessage('Event details updated successfully');
+                resetFormFields();
             }
         }
     };
+
+    const handleDelete = (): void => {
+        if (selectedIndex !== null) {
+            const documentId = eventsArray[selectedIndex].id;
+            if (documentId) {
+                const successResponse = deleteDocument('events', documentId);
+                if (!successResponse) {
+                    setIsError(true);
+                    setErrorMessage('Delete event encountered an error');
+                } else {
+                    setIsSuccess(true);
+                    setSuccessMessage('Event details deleted successfully');
+                    resetFormFields();
+                }
+            }
+        }
+    };
+
+    const handleAdd = (): void => {
+        const tempEvent: WcmEvent = {
+            date: DateTime.fromFormat(date, 'dd/MM/yyyy'),
+            description: description,
+            imageFilename: imageFilename,
+            lecture: lecture,
+            linkText: linkText,
+            linkUrl: linkUrl,
+            openNight: openNight,
+            theme: theme,
+            title: title,
+            visitors: visitors,
+        };
+
+        const successResponse = createNewDocument('events', tempEvent, undefined, imageAsFile);
+        if (!successResponse) {
+            setIsError(true);
+            setErrorMessage('Add event encountered an error');
+        } else {
+            setIsSuccess(true);
+            setSuccessMessage('Added event details successfully');
+            resetFormFields();
+        }
+    };
+
     const handleImageAsFile = (e: any): void => {
         const image = e.target.files[0];
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -168,10 +218,13 @@ const EventsAdmin = (): JSX.Element => {
     return (
         <div>
             <div className="appSubBodyContainer">
+                <h4>
+                    Season: {startYear} - {endYear}
+                </h4>
                 <div className="flexRow">
                     <div className="formContainer">
                         <h4>Events List</h4>
-                        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+                        <List sx={{ width: '100%', maxWidth: 500, bgcolor: 'background.paper' }}>
                             {eventsArray.map((e, index) => {
                                 return (
                                     <MenuItem key={index} onClick={() => setSelectedIndex(index)} selected={selectedIndex === index}>
@@ -182,7 +235,7 @@ const EventsAdmin = (): JSX.Element => {
                         </List>
                     </div>
                     <div className="formContainer">
-                        <h4>Edit/Add Event</h4>
+                        <h4>{selectedIndex ? 'Edit' : 'Add'} Event</h4>
                         <TextField
                             sx={style}
                             id="outlined-basic"
@@ -299,8 +352,13 @@ const EventsAdmin = (): JSX.Element => {
                                     Update
                                 </BootstrapButton>
                             )}
+                            {selectedEvent && (
+                                <BootstrapButton sx={style} color="warning" variant="contained" onClick={handleDelete}>
+                                    Delete
+                                </BootstrapButton>
+                            )}
                             {!selectedEvent && (
-                                <BootstrapButton sx={style} variant="contained" onClick={() => {}}>
+                                <BootstrapButton sx={style} variant="contained" onClick={handleAdd}>
                                     Add
                                 </BootstrapButton>
                             )}

@@ -10,7 +10,19 @@ import {
     User,
     UserCredential,
 } from 'firebase/auth';
-import { collection, doc, DocumentData, DocumentReference, getDoc, getFirestore, onSnapshot, setDoc, Timestamp } from 'firebase/firestore';
+import {
+    addDoc,
+    collection,
+    deleteDoc,
+    doc,
+    DocumentData,
+    DocumentReference,
+    getDoc,
+    getFirestore,
+    onSnapshot,
+    setDoc,
+    Timestamp,
+} from 'firebase/firestore';
 import { getStorage, ref, uploadBytes } from 'firebase/storage';
 import { DateTime } from 'luxon';
 
@@ -205,6 +217,7 @@ export const getAllMagicians = async (): Promise<WcmMagician[]> => {
         onSnapshot(eventsRef, (docsSnap) => {
             docsSnap.forEach((eventDoc) => {
                 const tempMagician: WcmMagician = {
+                    id: eventDoc.id,
                     name: eventDoc.data().name ?? null,
                     website1: eventDoc.data().website1 ?? null,
                     website2: eventDoc.data().website2 ?? null,
@@ -258,4 +271,122 @@ export const updateEvent = async (event: WcmEvent, imageAsFile?: any): Promise<b
         }
     }
     return null;
+};
+
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export const updateMagician = async (magician: WcmMagician, imageAsFile?: any): Promise<boolean | null> => {
+    let docSuccess = true;
+
+    if (magician.id) {
+        const docRef = doc(firestore, 'magicians', magician.id);
+
+        const data = {
+            name: magician.name,
+            website1: magician.website1,
+            website2: magician.website2,
+            imageFilename: magician.imageFilename,
+        };
+
+        try {
+            await setDoc(docRef, data, { merge: true });
+        } catch (error: any) {
+            docSuccess = false;
+            // console.log('error creating the user', error.message);
+        }
+        if (docSuccess && imageAsFile !== '') {
+            const storageRef = ref(firebaseStorage, `magicians/${imageAsFile.name}`);
+
+            const uploadTask = await uploadBytes(storageRef, imageAsFile);
+
+            if (uploadTask.metadata.name === magician.imageFilename) {
+                return true;
+            }
+        }
+
+        if (docSuccess && imageAsFile === '') {
+            return true;
+        }
+    }
+    return null;
+};
+
+export const createNewDocument = async (
+    location: string,
+    eventItem?: WcmEvent,
+    magicianItem?: WcmMagician,
+    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+    imageAsFile?: any
+): Promise<boolean | null> => {
+    let tempData = null;
+    let docSuccess = true;
+    let imageName = '';
+    if (!location) return null;
+    if (eventItem) {
+        tempData = {
+            date: Timestamp.fromDate(eventItem.date.toJSDate()),
+            description: eventItem.description,
+            imageFilename: eventItem.imageFilename,
+            lecture: eventItem.lecture,
+            linkText: eventItem.linkText,
+            linkUrl: eventItem.linkUrl,
+            openNight: eventItem.openNight,
+            theme: eventItem.theme,
+            title: eventItem.title,
+            visitors: eventItem.visitors,
+        };
+        if (eventItem.imageFilename) {
+            imageName = eventItem.imageFilename;
+        }
+    }
+    if (magicianItem) {
+        tempData = {
+            name: magicianItem.name,
+            website1: magicianItem.website1,
+            website2: magicianItem.website2,
+            imageFilename: magicianItem.imageFilename,
+        };
+        if (magicianItem.imageFilename) {
+            imageName = magicianItem.imageFilename;
+        }
+    }
+    try {
+        if (tempData) {
+            const docRef = await addDoc(collection(firestore, location), tempData);
+            docSuccess = docRef.id !== null || docRef.id !== undefined;
+        }
+    } catch (error: any) {
+        docSuccess = false;
+        // console.log('error creating the user', error.message);
+    }
+
+    if (docSuccess && imageAsFile !== '') {
+        const storageRef = ref(firebaseStorage, `${location}/${imageName}`);
+
+        const uploadTask = await uploadBytes(storageRef, imageAsFile);
+
+        if (uploadTask.metadata.name === imageName) {
+            return true;
+        }
+    }
+
+    if (docSuccess && imageAsFile === '') {
+        return true;
+    }
+
+    return null;
+};
+
+export const deleteDocument = async (location: string, documentId: string): Promise<boolean | null> => {
+    let docDeleteSuccess = null;
+    if (!location || !documentId) return null;
+
+    try {
+        const response = await deleteDoc(doc(firestore, location, documentId));
+        docDeleteSuccess = true;
+    } catch (error: any) {
+        docDeleteSuccess = false;
+        // console.log('error creating the user', error.message);
+    }
+
+    return docDeleteSuccess;
 };

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Box, Tab, Tabs } from '@mui/material';
 
 import EventAdmin from './eventsAdmin/eventsAdmin';
+import MagicianAdmin from './magicianAdmin/magicianAdmin';
 import UserAdmin from './userAdmin/userAdmin';
 
 const Admin = (): JSX.Element => {
@@ -30,7 +31,8 @@ const Admin = (): JSX.Element => {
             <div className="appSubBodyContainer">
                 <Tabs value={tabIndex} onChange={handleTabChange} orientation="horizontal">
                     <Tab label="User Admin" />
-                    <Tab label="Event Admin" />
+                    <Tab label="Event's Admin" />
+                    <Tab label="Magician's Admin" />
                     <Tab label="Admin" />
                 </Tabs>
                 {tabIndex === 0 && (
@@ -41,6 +43,11 @@ const Admin = (): JSX.Element => {
                 {tabIndex === 1 && (
                     <Box>
                         <EventAdmin />
+                    </Box>
+                )}
+                {tabIndex === 2 && (
+                    <Box>
+                        <MagicianAdmin />
                     </Box>
                 )}
             </div>

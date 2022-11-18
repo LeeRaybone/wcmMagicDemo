@@ -11,7 +11,7 @@ export type WcmUser = {
 };
 
 export type WcmEvent = {
-    id: string;
+    id?: string;
     date: DateTime;
     description?: string;
     imageFilename?: string;
@@ -30,6 +30,7 @@ export type WcmEventYear = {
 };
 
 export type WcmMagician = {
+    id?: string;
     name: string;
     website1?: string;
     website2?: string;
